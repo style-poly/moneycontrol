@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 4.1.3 (Python 3.8.2 on win32)" generated="20220116 17:04:48.004" rpa="false" schemaversion="2">
+<suite id="s1" name="Landing" source="C:\Users\user\PycharmProjects\moneycontrol\Test\Landing.robot">
+<test id="s1-t1" name="TC01">
+<kw name="Test2">
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>about:blank</arg>
+<arg>chrome</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20220116 17:04:49.376" level="INFO">Opening browser 'chrome' to base url 'about:blank'.</msg>
+<status status="PASS" starttime="20220116 17:04:49.376" endtime="20220116 17:04:51.472"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20220116 17:04:51.472" endtime="20220116 17:04:51.677"/>
+</kw>
+<kw name="Go To" library="SeleniumLibrary">
+<arg>https://www.moneycontrol.com/stocks/marketstats/top100.php</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<msg timestamp="20220116 17:04:51.678" level="INFO">Opening url 'https://www.moneycontrol.com/stocks/marketstats/top100.php'</msg>
+<status status="PASS" starttime="20220116 17:04:51.677" endtime="20220116 17:05:02.241"/>
+</kw>
+<kw name="Scroll Element Into View" library="SeleniumLibrary">
+<arg>xpath= //h2[text()='FII DII Trading Activity']</arg>
+<doc>Scrolls the element identified by ``locator`` into view.</doc>
+<status status="PASS" starttime="20220116 17:05:02.241" endtime="20220116 17:05:03.650"/>
+</kw>
+<kw name="Get Element Count" library="SeleniumLibrary">
+<var>${count}</var>
+<arg>${index_value}</arg>
+<doc>Returns the number of elements matching ``locator``.</doc>
+<msg timestamp="20220116 17:05:03.674" level="INFO">${count} = 5</msg>
+<status status="PASS" starttime="20220116 17:05:03.650" endtime="20220116 17:05:03.674"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${count}</var>
+<arg>${count}+1</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20220116 17:05:03.675" level="INFO">${count} = 6</msg>
+<status status="PASS" starttime="20220116 17:05:03.674" endtime="20220116 17:05:03.675"/>
+</kw>
+<for flavor="IN RANGE">
+<var>${index_row}</var>
+<value>1</value>
+<value>${count}</value>
+<iter>
+<var name="${index_row}">1</var>
+<kw name="Get Element Attribute" library="SeleniumLibrary">
+<var>${share_name}</var>
+<arg>(${index_name})[${index_row}]</arg>
+<arg>text</arg>
+<doc>Returns the value of ``attribute`` from the element ``locator``.</doc>
+<msg timestamp="20220116 17:05:03.784" level="INFO">${share_name} = S&amp;P BSE Sensex</msg>
+<status status="PASS" starttime="20220116 17:05:03.676" endtime="20220116 17:05:03.784"/>
+</kw>
+<kw name="Open Excel Document" library="ExcelLibrary">
+<arg>Input/chart.xlsx</arg>
+<arg>useTempDir=False</arg>
+<doc>Opens xlsx document file.</doc>
+<status status="PASS" starttime="20220116 17:05:03.784" endtime="20220116 17:05:03.799"/>
+</kw>
+<kw name="Write Excel Cell" library="ExcelLibrary">
+<arg>row_num=${index_row}</arg>
+<arg>col_num=1</arg>
+<arg>value=${share_name}</arg>
+<doc>Writes value to the cell.</doc>
+<status status="PASS" starttime="20220116 17:05:03.799" endtime="20220116 17:05:03.800"/>
+</kw>
+<kw name="Save Excel Document" library="ExcelLibrary">
+<arg>Input/chart.xlsx</arg>
+<doc>Saves the current document to disk.</doc>
+<status status="PASS" starttime="20220116 17:05:03.801" endtime="20220116 17:05:03.839"/>
+</kw>
+<status status="PASS" starttime="20220116 17:05:03.676" endtime="20220116 17:05:03.840"/>
+</iter>
+<iter>
+<var name="${index_row}">2</var>
+<kw name="Get Element Attribute" library="SeleniumLibrary">
+<var>${share_name}</var>
+<arg>(${index_name})[${index_row}]</arg>
+<arg>text</arg>
+<doc>Returns the value of ``attribute`` from the element ``locator``.</doc>
+<msg timestamp="20220116 17:05:03.888" level="INFO">${share_name} = NIFTY 50</msg>
+<status status="PASS" starttime="20220116 17:05:03.840" endtime="20220116 17:05:03.888"/>
+</kw>
+<kw name="Open Excel Document" library="ExcelLibrary">
+<arg>Input/chart.xlsx</arg>
+<arg>useTempDir=False</arg>
+<doc>Opens xlsx document file.</doc>
+<msg timestamp="20220116 17:05:03.891" level="FAIL">SuchIdIsExistException: Document with such id useTempDir=False is opened.</msg>
+<status status="FAIL" starttime="20220116 17:05:03.888" endtime="20220116 17:05:03.891"/>
+</kw>
+<kw name="Write Excel Cell" library="ExcelLibrary">
+<arg>row_num=${index_row}</arg>
+<arg>col_num=1</arg>
+<arg>value=${share_name}</arg>
+<doc>Writes value to the cell.</doc>
+<status status="NOT RUN" starttime="20220116 17:05:03.892" endtime="20220116 17:05:03.892"/>
+</kw>
+<kw name="Save Excel Document" library="ExcelLibrary">
+<arg>Input/chart.xlsx</arg>
+<doc>Saves the current document to disk.</doc>
+<status status="NOT RUN" starttime="20220116 17:05:03.892" endtime="20220116 17:05:03.892"/>
+</kw>
+<status status="FAIL" starttime="20220116 17:05:03.840" endtime="20220116 17:05:03.892"/>
+</iter>
+<status status="FAIL" starttime="20220116 17:05:03.675" endtime="20220116 17:05:03.893"/>
+</for>
+<for flavor="IN RANGE">
+<var>${index_ro}</var>
+<value>1</value>
+<value>${count}</value>
+<iter>
+<var name="${index_ro}">${index_ro}</var>
+<kw name="Get Element Attribute" library="SeleniumLibrary">
+<var>${share_value}</var>
+<arg>(${index_value})[${index_ro}]</arg>
+<arg>label</arg>
+<doc>Returns the value of ``attribute`` from the element ``locator``.</doc>
+<status status="NOT RUN" starttime="20220116 17:05:03.894" endtime="20220116 17:05:03.894"/>
+</kw>
+<kw name="Open Excel Document" library="ExcelLibrary">
+<arg>Input/chart.xlsx</arg>
+<arg>useTempDir=False</arg>
+<doc>Opens xlsx document file.</doc>
+<status status="NOT RUN" starttime="20220116 17:05:03.894" endtime="20220116 17:05:03.894"/>
+</kw>
+<kw name="Write Excel Cell" library="ExcelLibrary">
+<arg>row_num=${index_row}</arg>
+<arg>col_num=2</arg>
+<arg>value=${share_value}</arg>
+<doc>Writes value to the cell.</doc>
+<status status="NOT RUN" starttime="20220116 17:05:03.894" endtime="20220116 17:05:03.895"/>
+</kw>
+<kw name="Save Excel Document" library="ExcelLibrary">
+<arg>Input/chart.xlsx</arg>
+<doc>Saves the current document to disk.</doc>
+<status status="NOT RUN" starttime="20220116 17:05:03.895" endtime="20220116 17:05:03.895"/>
+</kw>
+<kw name="Close All Excel Documents" library="ExcelLibrary">
+<doc>Closes all opened documents.</doc>
+<status status="NOT RUN" starttime="20220116 17:05:03.895" endtime="20220116 17:05:03.895"/>
+</kw>
+<status status="NOT RUN" starttime="20220116 17:05:03.894" endtime="20220116 17:05:03.895"/>
+</iter>
+<status status="NOT RUN" starttime="20220116 17:05:03.893" endtime="20220116 17:05:03.895"/>
+</for>
+<kw name="Close All Browsers" library="SeleniumLibrary">
+<doc>Closes all open browsers and resets the browser cache.</doc>
+<status status="NOT RUN" starttime="20220116 17:05:03.896" endtime="20220116 17:05:03.896"/>
+</kw>
+<status status="FAIL" starttime="20220116 17:04:49.375" endtime="20220116 17:05:03.897"/>
+</kw>
+<status status="FAIL" starttime="20220116 17:04:49.374" endtime="20220116 17:05:03.898">SuchIdIsExistException: Document with such id useTempDir=False is opened.</status>
+</test>
+<doc>This is Landing file for money control</doc>
+<status status="FAIL" starttime="20220116 17:04:48.008" endtime="20220116 17:05:03.900"/>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="1" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="0" fail="1" skip="0" id="s1" name="Landing">Landing</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
