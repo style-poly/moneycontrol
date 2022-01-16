@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 4.1.3 (Python 3.8.2 on win32)" generated="20220116 17:04:48.004" rpa="false" schemaversion="2">
+<robot generator="Robot 4.1.3 (Python 3.8.2 on win32)" generated="20220116 19:43:28.279" rpa="false" schemaversion="2">
 <suite id="s1" name="Landing" source="C:\Users\user\PycharmProjects\moneycontrol\Test\Landing.robot">
 <test id="s1-t1" name="TC01">
 <kw name="Test2">
@@ -7,37 +7,37 @@
 <arg>about:blank</arg>
 <arg>chrome</arg>
 <doc>Opens a new browser instance to the optional ``url``.</doc>
-<msg timestamp="20220116 17:04:49.376" level="INFO">Opening browser 'chrome' to base url 'about:blank'.</msg>
-<status status="PASS" starttime="20220116 17:04:49.376" endtime="20220116 17:04:51.472"/>
+<msg timestamp="20220116 19:43:29.936" level="INFO">Opening browser 'chrome' to base url 'about:blank'.</msg>
+<status status="PASS" starttime="20220116 19:43:29.936" endtime="20220116 19:43:32.581"/>
 </kw>
 <kw name="Maximize Browser Window" library="SeleniumLibrary">
 <doc>Maximizes current browser window.</doc>
-<status status="PASS" starttime="20220116 17:04:51.472" endtime="20220116 17:04:51.677"/>
+<status status="PASS" starttime="20220116 19:43:32.581" endtime="20220116 19:43:32.777"/>
 </kw>
 <kw name="Go To" library="SeleniumLibrary">
 <arg>https://www.moneycontrol.com/stocks/marketstats/top100.php</arg>
 <doc>Navigates the current browser window to the provided ``url``.</doc>
-<msg timestamp="20220116 17:04:51.678" level="INFO">Opening url 'https://www.moneycontrol.com/stocks/marketstats/top100.php'</msg>
-<status status="PASS" starttime="20220116 17:04:51.677" endtime="20220116 17:05:02.241"/>
+<msg timestamp="20220116 19:43:32.780" level="INFO">Opening url 'https://www.moneycontrol.com/stocks/marketstats/top100.php'</msg>
+<status status="PASS" starttime="20220116 19:43:32.778" endtime="20220116 19:44:00.125"/>
 </kw>
 <kw name="Scroll Element Into View" library="SeleniumLibrary">
 <arg>xpath= //h2[text()='FII DII Trading Activity']</arg>
 <doc>Scrolls the element identified by ``locator`` into view.</doc>
-<status status="PASS" starttime="20220116 17:05:02.241" endtime="20220116 17:05:03.650"/>
+<status status="PASS" starttime="20220116 19:44:00.125" endtime="20220116 19:44:01.104"/>
 </kw>
 <kw name="Get Element Count" library="SeleniumLibrary">
 <var>${count}</var>
 <arg>${index_value}</arg>
 <doc>Returns the number of elements matching ``locator``.</doc>
-<msg timestamp="20220116 17:05:03.674" level="INFO">${count} = 5</msg>
-<status status="PASS" starttime="20220116 17:05:03.650" endtime="20220116 17:05:03.674"/>
+<msg timestamp="20220116 19:44:01.133" level="INFO">${count} = 5</msg>
+<status status="PASS" starttime="20220116 19:44:01.104" endtime="20220116 19:44:01.133"/>
 </kw>
 <kw name="Evaluate" library="BuiltIn">
 <var>${count}</var>
 <arg>${count}+1</arg>
 <doc>Evaluates the given expression in Python and returns the result.</doc>
-<msg timestamp="20220116 17:05:03.675" level="INFO">${count} = 6</msg>
-<status status="PASS" starttime="20220116 17:05:03.674" endtime="20220116 17:05:03.675"/>
+<msg timestamp="20220116 19:44:01.134" level="INFO">${count} = 6</msg>
+<status status="PASS" starttime="20220116 19:44:01.133" endtime="20220116 19:44:01.134"/>
 </kw>
 <for flavor="IN RANGE">
 <var>${index_row}</var>
@@ -50,28 +50,94 @@
 <arg>(${index_name})[${index_row}]</arg>
 <arg>text</arg>
 <doc>Returns the value of ``attribute`` from the element ``locator``.</doc>
-<msg timestamp="20220116 17:05:03.784" level="INFO">${share_name} = S&amp;P BSE Sensex</msg>
-<status status="PASS" starttime="20220116 17:05:03.676" endtime="20220116 17:05:03.784"/>
+<msg timestamp="20220116 19:44:01.197" level="INFO">${share_name} = S&amp;P BSE Sensex</msg>
+<status status="PASS" starttime="20220116 19:44:01.135" endtime="20220116 19:44:01.198"/>
+</kw>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${share_value}</var>
+<arg>(${index_value})[${index_row}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220116 19:44:01.254" level="INFO">${share_value} = 61223.03</msg>
+<status status="PASS" starttime="20220116 19:44:01.198" endtime="20220116 19:44:01.254"/>
+</kw>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${share_chng}</var>
+<arg>(${index_prct_chng})[${index_row}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220116 19:44:01.304" level="INFO">${share_chng} = -12.27
+-0.02</msg>
+<status status="PASS" starttime="20220116 19:44:01.255" endtime="20220116 19:44:01.305"/>
+</kw>
+<kw name="Split String" library="String">
+<var>@{split}</var>
+<arg>${share_chng}</arg>
+<doc>Splits the ``string`` using ``separator`` as a delimiter string.</doc>
+<msg timestamp="20220116 19:44:01.306" level="INFO">@{split} = [ -12.27 | -0.02 ]</msg>
+<status status="PASS" starttime="20220116 19:44:01.305" endtime="20220116 19:44:01.306"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${index_row}</var>
+<arg>${index_row}+1</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20220116 19:44:01.307" level="INFO">${index_row} = 2</msg>
+<status status="PASS" starttime="20220116 19:44:01.306" endtime="20220116 19:44:01.307"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${share_list}</arg>
+<arg>${share_name}</arg>
+<arg>${share_value}</arg>
+<arg>${split}[0]</arg>
+<arg>${split}[1]</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220116 19:44:01.308" endtime="20220116 19:44:01.309"/>
 </kw>
 <kw name="Open Excel Document" library="ExcelLibrary">
 <arg>Input/chart.xlsx</arg>
 <arg>useTempDir=False</arg>
 <doc>Opens xlsx document file.</doc>
-<status status="PASS" starttime="20220116 17:05:03.784" endtime="20220116 17:05:03.799"/>
+<status status="PASS" starttime="20220116 19:44:01.309" endtime="20220116 19:44:01.323"/>
 </kw>
-<kw name="Write Excel Cell" library="ExcelLibrary">
+<kw name="Write Excel Row" library="ExcelLibrary">
 <arg>row_num=${index_row}</arg>
-<arg>col_num=1</arg>
-<arg>value=${share_name}</arg>
-<doc>Writes value to the cell.</doc>
-<status status="PASS" starttime="20220116 17:05:03.799" endtime="20220116 17:05:03.800"/>
+<arg>row_data=${share_list}</arg>
+<arg>col_offset=1</arg>
+<doc>Writes a row to the document.</doc>
+<status status="PASS" starttime="20220116 19:44:01.324" endtime="20220116 19:44:01.325"/>
 </kw>
 <kw name="Save Excel Document" library="ExcelLibrary">
 <arg>Input/chart.xlsx</arg>
 <doc>Saves the current document to disk.</doc>
-<status status="PASS" starttime="20220116 17:05:03.801" endtime="20220116 17:05:03.839"/>
+<status status="PASS" starttime="20220116 19:44:01.326" endtime="20220116 19:44:01.351"/>
 </kw>
-<status status="PASS" starttime="20220116 17:05:03.676" endtime="20220116 17:05:03.840"/>
+<kw name="Close All Excel Documents" library="ExcelLibrary">
+<doc>Closes all opened documents.</doc>
+<status status="PASS" starttime="20220116 19:44:01.351" endtime="20220116 19:44:01.352"/>
+</kw>
+<kw name="Remove From List" library="Collections">
+<arg>${share_list}</arg>
+<arg>3</arg>
+<doc>Removes and returns the value specified with an ``index`` from ``list``.</doc>
+<status status="PASS" starttime="20220116 19:44:01.352" endtime="20220116 19:44:01.353"/>
+</kw>
+<kw name="Remove From List" library="Collections">
+<arg>${share_list}</arg>
+<arg>2</arg>
+<doc>Removes and returns the value specified with an ``index`` from ``list``.</doc>
+<status status="PASS" starttime="20220116 19:44:01.353" endtime="20220116 19:44:01.354"/>
+</kw>
+<kw name="Remove From List" library="Collections">
+<arg>${share_list}</arg>
+<arg>1</arg>
+<doc>Removes and returns the value specified with an ``index`` from ``list``.</doc>
+<status status="PASS" starttime="20220116 19:44:01.354" endtime="20220116 19:44:01.355"/>
+</kw>
+<kw name="Remove From List" library="Collections">
+<arg>${share_list}</arg>
+<arg>0</arg>
+<doc>Removes and returns the value specified with an ``index`` from ``list``.</doc>
+<status status="PASS" starttime="20220116 19:44:01.356" endtime="20220116 19:44:01.356"/>
+</kw>
+<status status="PASS" starttime="20220116 19:44:01.135" endtime="20220116 19:44:01.356"/>
 </iter>
 <iter>
 <var name="${index_row}">2</var>
@@ -80,90 +146,404 @@
 <arg>(${index_name})[${index_row}]</arg>
 <arg>text</arg>
 <doc>Returns the value of ``attribute`` from the element ``locator``.</doc>
-<msg timestamp="20220116 17:05:03.888" level="INFO">${share_name} = NIFTY 50</msg>
-<status status="PASS" starttime="20220116 17:05:03.840" endtime="20220116 17:05:03.888"/>
+<msg timestamp="20220116 19:44:01.411" level="INFO">${share_name} = NIFTY 50</msg>
+<status status="PASS" starttime="20220116 19:44:01.357" endtime="20220116 19:44:01.411"/>
 </kw>
-<kw name="Open Excel Document" library="ExcelLibrary">
-<arg>Input/chart.xlsx</arg>
-<arg>useTempDir=False</arg>
-<doc>Opens xlsx document file.</doc>
-<msg timestamp="20220116 17:05:03.891" level="FAIL">SuchIdIsExistException: Document with such id useTempDir=False is opened.</msg>
-<status status="FAIL" starttime="20220116 17:05:03.888" endtime="20220116 17:05:03.891"/>
-</kw>
-<kw name="Write Excel Cell" library="ExcelLibrary">
-<arg>row_num=${index_row}</arg>
-<arg>col_num=1</arg>
-<arg>value=${share_name}</arg>
-<doc>Writes value to the cell.</doc>
-<status status="NOT RUN" starttime="20220116 17:05:03.892" endtime="20220116 17:05:03.892"/>
-</kw>
-<kw name="Save Excel Document" library="ExcelLibrary">
-<arg>Input/chart.xlsx</arg>
-<doc>Saves the current document to disk.</doc>
-<status status="NOT RUN" starttime="20220116 17:05:03.892" endtime="20220116 17:05:03.892"/>
-</kw>
-<status status="FAIL" starttime="20220116 17:05:03.840" endtime="20220116 17:05:03.892"/>
-</iter>
-<status status="FAIL" starttime="20220116 17:05:03.675" endtime="20220116 17:05:03.893"/>
-</for>
-<for flavor="IN RANGE">
-<var>${index_ro}</var>
-<value>1</value>
-<value>${count}</value>
-<iter>
-<var name="${index_ro}">${index_ro}</var>
-<kw name="Get Element Attribute" library="SeleniumLibrary">
+<kw name="Get Text" library="SeleniumLibrary">
 <var>${share_value}</var>
-<arg>(${index_value})[${index_ro}]</arg>
-<arg>label</arg>
-<doc>Returns the value of ``attribute`` from the element ``locator``.</doc>
-<status status="NOT RUN" starttime="20220116 17:05:03.894" endtime="20220116 17:05:03.894"/>
+<arg>(${index_value})[${index_row}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220116 19:44:01.477" level="INFO">${share_value} = 18255.75</msg>
+<status status="PASS" starttime="20220116 19:44:01.412" endtime="20220116 19:44:01.477"/>
+</kw>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${share_chng}</var>
+<arg>(${index_prct_chng})[${index_row}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220116 19:44:01.532" level="INFO">${share_chng} = -2.05
+-0.01</msg>
+<status status="PASS" starttime="20220116 19:44:01.477" endtime="20220116 19:44:01.532"/>
+</kw>
+<kw name="Split String" library="String">
+<var>@{split}</var>
+<arg>${share_chng}</arg>
+<doc>Splits the ``string`` using ``separator`` as a delimiter string.</doc>
+<msg timestamp="20220116 19:44:01.533" level="INFO">@{split} = [ -2.05 | -0.01 ]</msg>
+<status status="PASS" starttime="20220116 19:44:01.532" endtime="20220116 19:44:01.533"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${index_row}</var>
+<arg>${index_row}+1</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20220116 19:44:01.534" level="INFO">${index_row} = 3</msg>
+<status status="PASS" starttime="20220116 19:44:01.533" endtime="20220116 19:44:01.534"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${share_list}</arg>
+<arg>${share_name}</arg>
+<arg>${share_value}</arg>
+<arg>${split}[0]</arg>
+<arg>${split}[1]</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220116 19:44:01.535" endtime="20220116 19:44:01.537"/>
 </kw>
 <kw name="Open Excel Document" library="ExcelLibrary">
 <arg>Input/chart.xlsx</arg>
 <arg>useTempDir=False</arg>
 <doc>Opens xlsx document file.</doc>
-<status status="NOT RUN" starttime="20220116 17:05:03.894" endtime="20220116 17:05:03.894"/>
+<status status="PASS" starttime="20220116 19:44:01.537" endtime="20220116 19:44:01.554"/>
 </kw>
-<kw name="Write Excel Cell" library="ExcelLibrary">
+<kw name="Write Excel Row" library="ExcelLibrary">
 <arg>row_num=${index_row}</arg>
-<arg>col_num=2</arg>
-<arg>value=${share_value}</arg>
-<doc>Writes value to the cell.</doc>
-<status status="NOT RUN" starttime="20220116 17:05:03.894" endtime="20220116 17:05:03.895"/>
+<arg>row_data=${share_list}</arg>
+<arg>col_offset=1</arg>
+<doc>Writes a row to the document.</doc>
+<status status="PASS" starttime="20220116 19:44:01.555" endtime="20220116 19:44:01.556"/>
 </kw>
 <kw name="Save Excel Document" library="ExcelLibrary">
 <arg>Input/chart.xlsx</arg>
 <doc>Saves the current document to disk.</doc>
-<status status="NOT RUN" starttime="20220116 17:05:03.895" endtime="20220116 17:05:03.895"/>
+<status status="PASS" starttime="20220116 19:44:01.556" endtime="20220116 19:44:01.589"/>
 </kw>
 <kw name="Close All Excel Documents" library="ExcelLibrary">
 <doc>Closes all opened documents.</doc>
-<status status="NOT RUN" starttime="20220116 17:05:03.895" endtime="20220116 17:05:03.895"/>
+<status status="PASS" starttime="20220116 19:44:01.589" endtime="20220116 19:44:01.592"/>
 </kw>
-<status status="NOT RUN" starttime="20220116 17:05:03.894" endtime="20220116 17:05:03.895"/>
+<kw name="Remove From List" library="Collections">
+<arg>${share_list}</arg>
+<arg>3</arg>
+<doc>Removes and returns the value specified with an ``index`` from ``list``.</doc>
+<status status="PASS" starttime="20220116 19:44:01.592" endtime="20220116 19:44:01.593"/>
+</kw>
+<kw name="Remove From List" library="Collections">
+<arg>${share_list}</arg>
+<arg>2</arg>
+<doc>Removes and returns the value specified with an ``index`` from ``list``.</doc>
+<status status="PASS" starttime="20220116 19:44:01.594" endtime="20220116 19:44:01.594"/>
+</kw>
+<kw name="Remove From List" library="Collections">
+<arg>${share_list}</arg>
+<arg>1</arg>
+<doc>Removes and returns the value specified with an ``index`` from ``list``.</doc>
+<status status="PASS" starttime="20220116 19:44:01.598" endtime="20220116 19:44:01.599"/>
+</kw>
+<kw name="Remove From List" library="Collections">
+<arg>${share_list}</arg>
+<arg>0</arg>
+<doc>Removes and returns the value specified with an ``index`` from ``list``.</doc>
+<status status="PASS" starttime="20220116 19:44:01.600" endtime="20220116 19:44:01.600"/>
+</kw>
+<status status="PASS" starttime="20220116 19:44:01.356" endtime="20220116 19:44:01.600"/>
 </iter>
-<status status="NOT RUN" starttime="20220116 17:05:03.893" endtime="20220116 17:05:03.895"/>
+<iter>
+<var name="${index_row}">3</var>
+<kw name="Get Element Attribute" library="SeleniumLibrary">
+<var>${share_name}</var>
+<arg>(${index_name})[${index_row}]</arg>
+<arg>text</arg>
+<doc>Returns the value of ``attribute`` from the element ``locator``.</doc>
+<msg timestamp="20220116 19:44:01.663" level="INFO">${share_name} = S&amp;P BSE Smallcap</msg>
+<status status="PASS" starttime="20220116 19:44:01.601" endtime="20220116 19:44:01.663"/>
+</kw>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${share_value}</var>
+<arg>(${index_value})[${index_row}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220116 19:44:01.718" level="INFO">${share_value} = 30951.28</msg>
+<status status="PASS" starttime="20220116 19:44:01.663" endtime="20220116 19:44:01.719"/>
+</kw>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${share_chng}</var>
+<arg>(${index_prct_chng})[${index_row}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220116 19:44:01.777" level="INFO">${share_chng} = 153.63
+0.50</msg>
+<status status="PASS" starttime="20220116 19:44:01.719" endtime="20220116 19:44:01.777"/>
+</kw>
+<kw name="Split String" library="String">
+<var>@{split}</var>
+<arg>${share_chng}</arg>
+<doc>Splits the ``string`` using ``separator`` as a delimiter string.</doc>
+<msg timestamp="20220116 19:44:01.778" level="INFO">@{split} = [ 153.63 | 0.50 ]</msg>
+<status status="PASS" starttime="20220116 19:44:01.777" endtime="20220116 19:44:01.778"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${index_row}</var>
+<arg>${index_row}+1</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20220116 19:44:01.779" level="INFO">${index_row} = 4</msg>
+<status status="PASS" starttime="20220116 19:44:01.778" endtime="20220116 19:44:01.779"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${share_list}</arg>
+<arg>${share_name}</arg>
+<arg>${share_value}</arg>
+<arg>${split}[0]</arg>
+<arg>${split}[1]</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220116 19:44:01.779" endtime="20220116 19:44:01.781"/>
+</kw>
+<kw name="Open Excel Document" library="ExcelLibrary">
+<arg>Input/chart.xlsx</arg>
+<arg>useTempDir=False</arg>
+<doc>Opens xlsx document file.</doc>
+<status status="PASS" starttime="20220116 19:44:01.781" endtime="20220116 19:44:01.793"/>
+</kw>
+<kw name="Write Excel Row" library="ExcelLibrary">
+<arg>row_num=${index_row}</arg>
+<arg>row_data=${share_list}</arg>
+<arg>col_offset=1</arg>
+<doc>Writes a row to the document.</doc>
+<status status="PASS" starttime="20220116 19:44:01.794" endtime="20220116 19:44:01.796"/>
+</kw>
+<kw name="Save Excel Document" library="ExcelLibrary">
+<arg>Input/chart.xlsx</arg>
+<doc>Saves the current document to disk.</doc>
+<status status="PASS" starttime="20220116 19:44:01.796" endtime="20220116 19:44:01.836"/>
+</kw>
+<kw name="Close All Excel Documents" library="ExcelLibrary">
+<doc>Closes all opened documents.</doc>
+<status status="PASS" starttime="20220116 19:44:01.836" endtime="20220116 19:44:01.836"/>
+</kw>
+<kw name="Remove From List" library="Collections">
+<arg>${share_list}</arg>
+<arg>3</arg>
+<doc>Removes and returns the value specified with an ``index`` from ``list``.</doc>
+<status status="PASS" starttime="20220116 19:44:01.837" endtime="20220116 19:44:01.837"/>
+</kw>
+<kw name="Remove From List" library="Collections">
+<arg>${share_list}</arg>
+<arg>2</arg>
+<doc>Removes and returns the value specified with an ``index`` from ``list``.</doc>
+<status status="PASS" starttime="20220116 19:44:01.837" endtime="20220116 19:44:01.838"/>
+</kw>
+<kw name="Remove From List" library="Collections">
+<arg>${share_list}</arg>
+<arg>1</arg>
+<doc>Removes and returns the value specified with an ``index`` from ``list``.</doc>
+<status status="PASS" starttime="20220116 19:44:01.838" endtime="20220116 19:44:01.838"/>
+</kw>
+<kw name="Remove From List" library="Collections">
+<arg>${share_list}</arg>
+<arg>0</arg>
+<doc>Removes and returns the value specified with an ``index`` from ``list``.</doc>
+<status status="PASS" starttime="20220116 19:44:01.839" endtime="20220116 19:44:01.839"/>
+</kw>
+<status status="PASS" starttime="20220116 19:44:01.601" endtime="20220116 19:44:01.839"/>
+</iter>
+<iter>
+<var name="${index_row}">4</var>
+<kw name="Get Element Attribute" library="SeleniumLibrary">
+<var>${share_name}</var>
+<arg>(${index_name})[${index_row}]</arg>
+<arg>text</arg>
+<doc>Returns the value of ``attribute`` from the element ``locator``.</doc>
+<msg timestamp="20220116 19:44:01.889" level="INFO">${share_name} = S&amp;P BSE Midcap</msg>
+<status status="PASS" starttime="20220116 19:44:01.841" endtime="20220116 19:44:01.889"/>
+</kw>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${share_value}</var>
+<arg>(${index_value})[${index_row}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220116 19:44:01.937" level="INFO">${share_value} = 26085.24</msg>
+<status status="PASS" starttime="20220116 19:44:01.890" endtime="20220116 19:44:01.937"/>
+</kw>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${share_chng}</var>
+<arg>(${index_prct_chng})[${index_row}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220116 19:44:01.987" level="INFO">${share_chng} = 58.03
+0.22</msg>
+<status status="PASS" starttime="20220116 19:44:01.938" endtime="20220116 19:44:01.987"/>
+</kw>
+<kw name="Split String" library="String">
+<var>@{split}</var>
+<arg>${share_chng}</arg>
+<doc>Splits the ``string`` using ``separator`` as a delimiter string.</doc>
+<msg timestamp="20220116 19:44:01.988" level="INFO">@{split} = [ 58.03 | 0.22 ]</msg>
+<status status="PASS" starttime="20220116 19:44:01.987" endtime="20220116 19:44:01.988"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${index_row}</var>
+<arg>${index_row}+1</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20220116 19:44:01.989" level="INFO">${index_row} = 5</msg>
+<status status="PASS" starttime="20220116 19:44:01.988" endtime="20220116 19:44:01.989"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${share_list}</arg>
+<arg>${share_name}</arg>
+<arg>${share_value}</arg>
+<arg>${split}[0]</arg>
+<arg>${split}[1]</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220116 19:44:01.989" endtime="20220116 19:44:01.990"/>
+</kw>
+<kw name="Open Excel Document" library="ExcelLibrary">
+<arg>Input/chart.xlsx</arg>
+<arg>useTempDir=False</arg>
+<doc>Opens xlsx document file.</doc>
+<status status="PASS" starttime="20220116 19:44:01.990" endtime="20220116 19:44:02.003"/>
+</kw>
+<kw name="Write Excel Row" library="ExcelLibrary">
+<arg>row_num=${index_row}</arg>
+<arg>row_data=${share_list}</arg>
+<arg>col_offset=1</arg>
+<doc>Writes a row to the document.</doc>
+<status status="PASS" starttime="20220116 19:44:02.004" endtime="20220116 19:44:02.005"/>
+</kw>
+<kw name="Save Excel Document" library="ExcelLibrary">
+<arg>Input/chart.xlsx</arg>
+<doc>Saves the current document to disk.</doc>
+<status status="PASS" starttime="20220116 19:44:02.006" endtime="20220116 19:44:02.035"/>
+</kw>
+<kw name="Close All Excel Documents" library="ExcelLibrary">
+<doc>Closes all opened documents.</doc>
+<status status="PASS" starttime="20220116 19:44:02.035" endtime="20220116 19:44:02.036"/>
+</kw>
+<kw name="Remove From List" library="Collections">
+<arg>${share_list}</arg>
+<arg>3</arg>
+<doc>Removes and returns the value specified with an ``index`` from ``list``.</doc>
+<status status="PASS" starttime="20220116 19:44:02.036" endtime="20220116 19:44:02.036"/>
+</kw>
+<kw name="Remove From List" library="Collections">
+<arg>${share_list}</arg>
+<arg>2</arg>
+<doc>Removes and returns the value specified with an ``index`` from ``list``.</doc>
+<status status="PASS" starttime="20220116 19:44:02.037" endtime="20220116 19:44:02.037"/>
+</kw>
+<kw name="Remove From List" library="Collections">
+<arg>${share_list}</arg>
+<arg>1</arg>
+<doc>Removes and returns the value specified with an ``index`` from ``list``.</doc>
+<status status="PASS" starttime="20220116 19:44:02.038" endtime="20220116 19:44:02.038"/>
+</kw>
+<kw name="Remove From List" library="Collections">
+<arg>${share_list}</arg>
+<arg>0</arg>
+<doc>Removes and returns the value specified with an ``index`` from ``list``.</doc>
+<status status="PASS" starttime="20220116 19:44:02.039" endtime="20220116 19:44:02.039"/>
+</kw>
+<status status="PASS" starttime="20220116 19:44:01.841" endtime="20220116 19:44:02.040"/>
+</iter>
+<iter>
+<var name="${index_row}">5</var>
+<kw name="Get Element Attribute" library="SeleniumLibrary">
+<var>${share_name}</var>
+<arg>(${index_name})[${index_row}]</arg>
+<arg>text</arg>
+<doc>Returns the value of ``attribute`` from the element ``locator``.</doc>
+<msg timestamp="20220116 19:44:02.083" level="INFO">${share_name} = S&amp;P BSE SmallCap Select Index</msg>
+<status status="PASS" starttime="20220116 19:44:02.041" endtime="20220116 19:44:02.083"/>
+</kw>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${share_value}</var>
+<arg>(${index_value})[${index_row}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220116 19:44:02.130" level="INFO">${share_value} = 5300.64</msg>
+<status status="PASS" starttime="20220116 19:44:02.083" endtime="20220116 19:44:02.130"/>
+</kw>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${share_chng}</var>
+<arg>(${index_prct_chng})[${index_row}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220116 19:44:02.177" level="INFO">${share_chng} = -9.62
+-0.18</msg>
+<status status="PASS" starttime="20220116 19:44:02.131" endtime="20220116 19:44:02.177"/>
+</kw>
+<kw name="Split String" library="String">
+<var>@{split}</var>
+<arg>${share_chng}</arg>
+<doc>Splits the ``string`` using ``separator`` as a delimiter string.</doc>
+<msg timestamp="20220116 19:44:02.178" level="INFO">@{split} = [ -9.62 | -0.18 ]</msg>
+<status status="PASS" starttime="20220116 19:44:02.177" endtime="20220116 19:44:02.178"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${index_row}</var>
+<arg>${index_row}+1</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20220116 19:44:02.179" level="INFO">${index_row} = 6</msg>
+<status status="PASS" starttime="20220116 19:44:02.178" endtime="20220116 19:44:02.179"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${share_list}</arg>
+<arg>${share_name}</arg>
+<arg>${share_value}</arg>
+<arg>${split}[0]</arg>
+<arg>${split}[1]</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220116 19:44:02.179" endtime="20220116 19:44:02.181"/>
+</kw>
+<kw name="Open Excel Document" library="ExcelLibrary">
+<arg>Input/chart.xlsx</arg>
+<arg>useTempDir=False</arg>
+<doc>Opens xlsx document file.</doc>
+<status status="PASS" starttime="20220116 19:44:02.181" endtime="20220116 19:44:02.195"/>
+</kw>
+<kw name="Write Excel Row" library="ExcelLibrary">
+<arg>row_num=${index_row}</arg>
+<arg>row_data=${share_list}</arg>
+<arg>col_offset=1</arg>
+<doc>Writes a row to the document.</doc>
+<status status="PASS" starttime="20220116 19:44:02.195" endtime="20220116 19:44:02.196"/>
+</kw>
+<kw name="Save Excel Document" library="ExcelLibrary">
+<arg>Input/chart.xlsx</arg>
+<doc>Saves the current document to disk.</doc>
+<status status="PASS" starttime="20220116 19:44:02.197" endtime="20220116 19:44:02.248"/>
+</kw>
+<kw name="Close All Excel Documents" library="ExcelLibrary">
+<doc>Closes all opened documents.</doc>
+<status status="PASS" starttime="20220116 19:44:02.248" endtime="20220116 19:44:02.248"/>
+</kw>
+<kw name="Remove From List" library="Collections">
+<arg>${share_list}</arg>
+<arg>3</arg>
+<doc>Removes and returns the value specified with an ``index`` from ``list``.</doc>
+<status status="PASS" starttime="20220116 19:44:02.249" endtime="20220116 19:44:02.249"/>
+</kw>
+<kw name="Remove From List" library="Collections">
+<arg>${share_list}</arg>
+<arg>2</arg>
+<doc>Removes and returns the value specified with an ``index`` from ``list``.</doc>
+<status status="PASS" starttime="20220116 19:44:02.249" endtime="20220116 19:44:02.250"/>
+</kw>
+<kw name="Remove From List" library="Collections">
+<arg>${share_list}</arg>
+<arg>1</arg>
+<doc>Removes and returns the value specified with an ``index`` from ``list``.</doc>
+<status status="PASS" starttime="20220116 19:44:02.250" endtime="20220116 19:44:02.251"/>
+</kw>
+<kw name="Remove From List" library="Collections">
+<arg>${share_list}</arg>
+<arg>0</arg>
+<doc>Removes and returns the value specified with an ``index`` from ``list``.</doc>
+<status status="PASS" starttime="20220116 19:44:02.251" endtime="20220116 19:44:02.251"/>
+</kw>
+<status status="PASS" starttime="20220116 19:44:02.041" endtime="20220116 19:44:02.251"/>
+</iter>
+<status status="PASS" starttime="20220116 19:44:01.134" endtime="20220116 19:44:02.251"/>
 </for>
 <kw name="Close All Browsers" library="SeleniumLibrary">
 <doc>Closes all open browsers and resets the browser cache.</doc>
-<status status="NOT RUN" starttime="20220116 17:05:03.896" endtime="20220116 17:05:03.896"/>
+<status status="PASS" starttime="20220116 19:44:02.252" endtime="20220116 19:44:05.684"/>
 </kw>
-<status status="FAIL" starttime="20220116 17:04:49.375" endtime="20220116 17:05:03.897"/>
+<status status="PASS" starttime="20220116 19:43:29.934" endtime="20220116 19:44:05.685"/>
 </kw>
-<status status="FAIL" starttime="20220116 17:04:49.374" endtime="20220116 17:05:03.898">SuchIdIsExistException: Document with such id useTempDir=False is opened.</status>
+<status status="PASS" starttime="20220116 19:43:29.932" endtime="20220116 19:44:05.686"/>
 </test>
 <doc>This is Landing file for money control</doc>
-<status status="FAIL" starttime="20220116 17:04:48.008" endtime="20220116 17:05:03.900"/>
+<status status="PASS" starttime="20220116 19:43:28.286" endtime="20220116 19:44:05.690"/>
 </suite>
 <statistics>
 <total>
-<stat pass="0" fail="1" skip="0">All Tests</stat>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
 </total>
 <tag>
 </tag>
 <suite>
-<stat pass="0" fail="1" skip="0" id="s1" name="Landing">Landing</stat>
+<stat pass="1" fail="0" skip="0" id="s1" name="Landing">Landing</stat>
 </suite>
 </statistics>
 <errors>

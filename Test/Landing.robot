@@ -3,6 +3,7 @@ Documentation    This is Landing file for money control
 Library    SeleniumLibrary
 Library    String
 Library    ExcelLibrary
+Library     Collections
 Resource    ../Input/variable_list.robot
 
 *** Test Cases ***
@@ -16,21 +17,23 @@ Test2
     scroll element into view    xpath= //h2[text()='FII DII Trading Activity']
     ${count}    get element count   ${index_value}
     ${count}    evaluate     ${count}+1
-
     FOR     ${index_row}    IN RANGE    1   ${count}
         #to print the data for the share names
         ${share_name}  get element attribute   (${index_name})[${index_row}]    text
+        ${share_value}  get text    (${index_value})[${index_row}]
+        ${share_chng}  get text    (${index_prct_chng})[${index_row}]
+        @{split}    split string    ${share_chng}
+        ${index_row}    evaluate    ${index_row}+1
+        #TODO   header to be added & set global variable    &  get excel out of the loop
+        append to list      ${share_list}   ${share_name}   ${share_value}  ${split}[0]     ${split}[1]
         open excel document     Input/chart.xlsx      useTempDir=False
-        write excel cell    row_num=${index_row}   col_num=1   value=${share_name}
-        save excel document     Input/chart.xlsx
-#        close all excel documents
-    END
-    FOR     ${index_ro}    IN RANGE    1   ${count}
-        ${share_value}  get element attribute   (${index_value})[${index_ro}]  label
-        open excel document     Input/chart.xlsx      useTempDir=False
-        write excel cell    row_num=${index_row}   col_num=2   value=${share_value}
+        write excel row    row_num=${index_row}     row_data=${share_list}   col_offset=0
         save excel document     Input/chart.xlsx
         close all excel documents
+        remove from list    ${share_list}   3
+        remove from list    ${share_list}   2
+        remove from list    ${share_list}   1
+        remove from list    ${share_list}   0
+
     END
     close all browsers
-#ToDo         Get Green_class and use string library to seperate the nums
